@@ -107,17 +107,17 @@ void initializeMap()
 		}
 }
 
-int curFieldX = 1;
-int curFieldY = 1;
-int curPosX = 1;
-int curPosY = 1;
+unsigned int curFieldX = 1;
+unsigned int curFieldY = 1;
+unsigned int curPosX = 1;
+unsigned int curPosY = 1;
 
 void draw()
 {
 	for( unsigned int x = 0; x < MAP_X; x++ )
 		for( unsigned int y = 0; y < MAP_Y; y++ )
 		{
-			unsigned int icon;
+			unsigned int icon = ' ';
 			switch( map[ x ][ y ] )
 			{
 			case border_tile:
@@ -231,7 +231,7 @@ bool makeMove( int action )
 			--offsetY;
 			break;
 		}
-		if( gameState != moveGlobal &&  map[ curPosX + offsetX ][ curPosY + offsetY ] == border_tile
+		if( (gameState != moveGlobal &&  map[ curPosX + offsetX ][ curPosY + offsetY ] == border_tile)
 			|| curPosX + offsetX == 0 || curPosX + offsetX == MAP_X - 1
 			|| curPosY + offsetY == 0 || curPosY + offsetY == MAP_Y - 1 )
 			return false;
@@ -297,6 +297,8 @@ bool placeMark()
 		else
 			markType = naught_cwon;
 		break;
+    default:
+        break;
 	}
 	map[ curPosX ][ curPosY ] = markType;
 	// check the victory conditions
@@ -352,6 +354,8 @@ bool placeMark()
 						else
 							map[ x ][ y ] = naught_nwon;
 						break;
+                    default:
+                        break;
 					}
 				}
 		}

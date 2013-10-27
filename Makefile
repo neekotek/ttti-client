@@ -1,5 +1,5 @@
 CC = gcc
-CCOPTS = -O3
+CCOPTS = -O3 -Wall -pedantic
 INCLUDES = 
 LIBS = -lcurses
 LIB_INCLUDES =
