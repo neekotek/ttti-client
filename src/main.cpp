@@ -165,7 +165,7 @@ void draw()
 		wrefresh( stdscr );
 }
 
-enum
+enum moveType
 {
 	moveField,
 	moveGlobal
